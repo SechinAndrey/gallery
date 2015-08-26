@@ -1,5 +1,16 @@
 Gallery::Application.routes.draw do
+
+  root 'home_page#index'
+
+  get 'home_page/index'
+
+  get 'home_page/about'
+
+  get 'home_page/help'
+
   devise_for :users
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

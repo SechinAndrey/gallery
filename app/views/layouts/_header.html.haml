@@ -1,0 +1,13 @@
+%nav.navbar.navbar-default
+  %p.navbar-text
+    = greeting
+  .container-fluid
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        %li
+          = link_to("LogOut", destroy_user_session_path, :method => :delete)
+      -else
+        %li
+          = link_to "Log in", new_session_path(:user)
+        %li
+          = link_to "Sign up", new_registration_path(:user)
