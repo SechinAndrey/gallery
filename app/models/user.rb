@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook, :vkontakte]
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+      if data = session["devise.#{user.provider}_data"] && session["devise.#{user.provider}_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
@@ -15,12 +15,11 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = "#{auth[:provider]}@#{auth[:extra][:raw_info][:name].delete ' '}.com"
+      user.email = "#{auth[:provider]}@#{auth.info.name.delete(' ')}.com"
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
-      #user.image = auth.info.image # assuming the user model has an image
+      # user.image = auth.info.image # assuming the user model has an image
     end
   end
-
-
+  
 end
