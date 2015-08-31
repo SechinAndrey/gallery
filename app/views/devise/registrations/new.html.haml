@@ -7,11 +7,12 @@
       .form-group
         =f.label :name
         %br/
-        = f.text_field :name, autofocus: true, class: "form-control"
+        = f.text_field :name, autofocus: true, class: "form-control", value:  params[:name] ||= ""
       .form-group
         = f.label :email
         %br/
-        = f.email_field :email, class: "form-control"
+        = f.email_field :email, class: "form-control",
+        value: !params[:provider].nil? ? "#{params[:provider]}@#{params[:name].delete(' ')}.com"  : ""
       .form-group
         = f.label :password
         - if @minimum_password_length
