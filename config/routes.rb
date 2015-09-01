@@ -8,6 +8,8 @@ Gallery::Application.routes.draw do
 
   get 'home_page/help'
 
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks"  }
 
 
