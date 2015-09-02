@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
-  def index
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  def index
   end
 
   def ensure_signup_complete
@@ -13,4 +15,13 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path(current_user)
     end
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
+  end
+
 end

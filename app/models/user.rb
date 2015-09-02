@@ -4,10 +4,37 @@ class User < ActiveRecord::Base
 
   has_many :identity, :dependent => :destroy
 
+
+  validates :username,
+            :presence => true,
+            :uniqueness => {
+                :case_sensitive => false
+            } # etc.
+
+  def login=(login)
+    @login = login
+  end
+
+  def login
+    @login || self.username || self.email
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions.to_h).first
+    end
+  end
+
+
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+         :authentication_keys => {email: true, login: false}
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
@@ -35,8 +62,8 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-            name: auth.extra.raw_info.name,
-            #username: auth.info.nickname || auth.uid,
+            name: auth.info.name,
+            username: auth.extra.raw_info.screen_name || auth.uid,
             email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
             password: Devise.friendly_token[0,20]
         )
