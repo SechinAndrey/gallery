@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         :authentication_keys => {email: true, login: false}
+         :authentication_keys => [:login]
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
