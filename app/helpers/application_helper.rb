@@ -4,8 +4,4 @@ module ApplicationHelper
     user_signed_in? ? "Hello #{current_user.name}" : "Hello Guest"
   end
 
-  def limitation
-
-  end
-
 end

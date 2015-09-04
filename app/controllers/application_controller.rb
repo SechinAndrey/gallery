@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :limitation_without_confirmation
 
   def index
   end
@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     if current_user && !current_user.email_verified?
       redirect_to finish_signup_path(current_user)
     end
+  end
+
+
+  def limitation_without_confirmation
+
+    if current_user && !current_user.email_verified?
+      redirect_to finish_signup_path(current_user)
+    end
+
   end
 
   protected

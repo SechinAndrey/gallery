@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup, :username]
-
+  skip_before_action :limitation_without_confirmation, only: [:finish_signup]
 
   # GET /users/:id.:format
   def show
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def finish_signup
     # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
-      if @user.update(user_params)
+      if @user.update(user_params_not_blanck)
         @user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
         redirect_to root_path, notice: 'Your profile was successfully updated.'
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     # authorize! :delete, @user
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
@@ -61,4 +61,11 @@ class UsersController < ApplicationController
     accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
     params.require(:user).permit(accessible)
   end
+
+  def user_params_not_blanck
+    accessible = [ :name, :email, :username] # extend with your own params
+    accessible << [ :password, :password_confirmation ] #unless params[:user][:password].blank?
+    params.require(:user).permit(accessible)
+  end
+
   end

@@ -2,7 +2,7 @@ Gallery::Application.routes.draw do
 
   root 'home_page#index'
 
-  get 'home_page/index'
+  #get 'home_page/index'
 
   get 'home_page/about'
 
@@ -10,7 +10,7 @@ Gallery::Application.routes.draw do
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks"  }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks", sessions: 'sessions' }
 
 
   
