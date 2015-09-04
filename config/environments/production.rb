@@ -91,7 +91,7 @@ Gallery::Application.configure do
       address: 'smtp.gmail.com',
       port: '587',
       enable_starttls_auto: true,
-      user_name: 'galleryofficial@gamail.com',
+      user_name: 'sfgskjfg@gmail.com',
       password: ENV['gmail_pass'],
       authentication: :plain,
       domain: 'gamail.com'
