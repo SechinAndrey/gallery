@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :limitation_without_confirmation
+  before_action :limitation_without_confirmation, only: [:edit]
 
   def index
   end

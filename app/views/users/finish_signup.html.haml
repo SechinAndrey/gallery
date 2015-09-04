@@ -9,11 +9,11 @@
     .form-group
       = f.label :username
       %br/
-      = f.text_field :username, class: "form-control", value: ""
+      = f.text_field :username, class: "form-control", value: "", :autofocus => true
     .form-group
       = f.label :email
       .controls
-        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control', placeholder: 'Example: email@me.com'
+        = f.text_field :email, :value => '', class: 'form-control', placeholder: 'Example: email@me.com'
         %p.help-block Please confirm your email address. No spam.
     .form-group
       = f.label :password

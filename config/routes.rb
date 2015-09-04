@@ -10,7 +10,11 @@ Gallery::Application.routes.draw do
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks", sessions: 'sessions' }
+  devise_for :users, :controllers => { registrations: 'registrations',
+                                       omniauth_callbacks: "users/omniauth_callbacks",
+                                       sessions: 'sessions',
+                                       confirmations: 'confirmations'
+                                     }
 
 
   
