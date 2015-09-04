@@ -92,7 +92,7 @@ Gallery::Application.configure do
       port: '587',
       enable_starttls_auto: true,
       user_name: 'galleryofficial@gamail.com',
-      password: 'qwertyazsxdc',
+      password: ENV['gmail_pass'],
       authentication: :plain,
       domain: 'gamail.com'
   }
