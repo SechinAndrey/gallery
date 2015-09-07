@@ -236,8 +236,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, ENV['fb_key'], ENV['fb_secret_key']
-  config.omniauth :vkontakte, ENV['vk_key'], ENV['vk_secret_key']
+  p "*"*100
+  p ENV["fb_key"]
+
+  config.omniauth :facebook, '1023023417728988', 'ed08088800d910a0dc7dea33f9915323'#ENV['fb_key'], ENV['fb_secret_key']
+  config.omniauth :vkontakte, '5048143', 'WOfYmpqY4cw24M42E5Jg' #ENV['vk_key'], ENV['vk_secret_key']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -262,6 +265,6 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  config.mailer = 'Devise::Mailer'
+  config.mailer = 'MyOverriddenMailer'
   config.mailer_sender = 'sfgskjfg@gmail.com'
 end

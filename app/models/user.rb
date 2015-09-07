@@ -2,6 +2,12 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+         :authentication_keys => [:login]
+
   has_many :identity, :dependent => :destroy
 
 
@@ -30,11 +36,7 @@ class User < ActiveRecord::Base
 
 
 
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         :authentication_keys => [:login]
+
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 

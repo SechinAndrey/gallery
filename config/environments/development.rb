@@ -1,5 +1,5 @@
 Gallery::Application.configure do
-  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -28,7 +28,7 @@ Gallery::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # General Settings
   config.app_domain = 'localhost:3000'
 
@@ -41,7 +41,7 @@ Gallery::Application.configure do
       port: '587',
       enable_starttls_auto: true,
       user_name: 'sfgskjfg@gmail.com',
-      password: ENV['gmail_pass'],
+      password: 'QWEqwe123',#ENV['gmail_pass'],
       authentication: :plain,
       domain: 'gamail.com'
   }
