@@ -1,5 +1,5 @@
 class HomePageController < ApplicationController
-  skip_before_action :limitation_without_confirmation, only: [:show, :index]
+  #skip_before_action :limitation_without_confirmation, only: [:show, :index]
 
   def index
   end

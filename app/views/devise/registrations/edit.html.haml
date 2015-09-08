@@ -41,7 +41,10 @@
       .form-group
         = f.submit "Update", class: "btn btn-default"
       - resource_class.omniauth_providers.each do |provider|
-        = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+        -if !Identity.acc(provider, resource.id)
+          = link_to "Bound account #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+        -else
+          = link_to "Unbound account #{provider.to_s.titleize}", identity_destroy_path({provider: provider, id: resource.id})
         %br/
     %h3 Cancel my account
     %p

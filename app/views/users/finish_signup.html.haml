@@ -1,30 +1,36 @@
 #add-email.container
   %h1 Finish Sign Up
   = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f|
-    = render 'shared/error_messages', object: f.object
-    - if @show_errors && current_user.errors.any?
+    = render 'shared/error_messages', object: @user
+    -# if @show_errors && current_user.errors.any?
       #error_explanation
         - current_user.errors.full_messages.each do |msg|
           = msg
           %br/
-    .form-group
-      = f.label :username, value: "login"
+    - if !current_user.unconfirmed_email.nil?
+      .alert.alert-warning
+        Please confirm your email address.
+      = link_to "Didn't receive confirmation instructions?", new_confirmation_path(current_user)
       %br/
-      = f.text_field :username, class: "form-control", value: "", :autofocus => true
-    .form-group
-      = f.label :email
-      .controls
-        = f.text_field :email, :value => '', class: 'form-control', placeholder: 'Example: email@me.com'
-        %p.help-block Please confirm your email address. No spam.
-    .form-group
-      = f.label :password
-      %em
-        (4 characters minimum)
-      %br/
-      = f.password_field :password, autocomplete: "off", class: "form-control"
+    -else
       .form-group
-        = f.label :password_confirmation
+        = f.label :username, value: "login"
         %br/
-        = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
-    .actions
-      = f.submit 'Continue', :class => 'btn btn-primary'
+        = f.text_field :username, class: "form-control", value: "", :autofocus => true
+      .form-group
+        = f.label :email
+        .controls
+          = f.text_field :email, :value => '', class: 'form-control', placeholder: 'Example: email@me.com'
+          %p.help-block Please confirm your email address. No spam.
+      .form-group
+        = f.label :password
+        %em
+          (4 characters minimum)
+        %br/
+        = f.password_field :password, autocomplete: "off", class: "form-control"
+        .form-group
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+      .actions
+        = f.submit 'Continue', :class => 'btn btn-primary'

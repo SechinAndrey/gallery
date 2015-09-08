@@ -1,5 +1,7 @@
 Gallery::Application.routes.draw do
 
+  get 'identity/destroy'
+
   root 'home_page#index'
 
   #get 'home_page/index'
