@@ -236,8 +236,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  p "*"*100
-  p ENV["fb_key"]
+  #p "*"*100
+  #p ENV["fb_key"]
 
   config.omniauth :facebook, '1023023417728988', 'ed08088800d910a0dc7dea33f9915323'#ENV['fb_key'], ENV['fb_secret_key']
   config.omniauth :vkontakte, '5048143', 'WOfYmpqY4cw24M42E5Jg' #ENV['vk_key'], ENV['vk_secret_key']

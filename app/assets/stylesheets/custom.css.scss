@@ -1,4 +1,12 @@
 /* forms */
+.navbar-default {
+  height: 60px;
+  .greeting_menu {
+    margin-top: 5px;
+  }
+}
+
+
 @import "bootstrap";
 #error_explanation {
   color: #f00;
@@ -8,9 +16,6 @@
   }
 }
 
-
-
 .field_with_errors {
   @extend .has-error;
-
 }

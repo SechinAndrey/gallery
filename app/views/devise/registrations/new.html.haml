@@ -30,5 +30,7 @@
         %br/
         = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
       .form-group
+        = f.file_field :image
+        %br/
         = f.submit "Sign up", class: "btn btn-default"
     = render "devise/shared/links"
