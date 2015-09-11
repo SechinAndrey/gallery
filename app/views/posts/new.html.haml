@@ -7,8 +7,10 @@
       = #devise_error_messages!
       .form-group
         = f.label :topik,  value: "Topic"
+        %em
+          (150 characters maximum)
         %br/
-        = f.text_field :topik, class: "form-control", autofocus: true
+        = f.text_field :topik, class: "form-control", autofocus: true, maxlength: "150"
         %br/
       .form-group
         = f.label :content,  value: "Content"

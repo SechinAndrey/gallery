@@ -14,12 +14,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    p current_user
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to root_path
     else
-      #out errors
+      flash[:alert] = "Fill in all the fields."
+      redirect_to new_post_path
     end
   end
 
