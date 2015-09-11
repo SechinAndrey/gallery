@@ -12,6 +12,9 @@ gem 'devise'
 gem 'carrierwave'
 gem "rmagick"
 
+gem "will_paginate", "~> 3.0.4"
+gem 'will_paginate-bootstrap'
+
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'

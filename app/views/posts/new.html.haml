@@ -1,0 +1,20 @@
+.row
+  .col-md-4
+  .col-md-4
+    %h2 Create post
+    = form_for @post do |f|
+      = render 'shared/error_messages', object: f.object
+      = #devise_error_messages!
+      .form-group
+        = f.label :topik,  value: "Topic"
+        %br/
+        = f.text_field :topik, class: "form-control", autofocus: true
+        %br/
+      .form-group
+        = f.label :content,  value: "Content"
+        %br/
+        = f.text_area :content, class: "form-control"
+        %br/
+        = link_to "Back", :back
+        .crt_post
+          = f.submit "Create post", class: "btn btn-primary"

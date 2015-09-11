@@ -1,8 +1,8 @@
 Gallery::Application.routes.draw do
 
-  get 'identity/destroy'
+  root 'posts#index'
 
-  root 'home_page#index'
+  get 'identity/destroy'
 
   #get 'home_page/index'
 
@@ -18,6 +18,7 @@ Gallery::Application.routes.draw do
                                        confirmations: 'confirmations'
                                      }
 
+  resources :posts
 
   
   # The priority is based upon order of creation: first created -> highest priority.

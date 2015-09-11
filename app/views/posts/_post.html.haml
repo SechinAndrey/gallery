@@ -1,0 +1,15 @@
+%br
+  -if @post.user.image_url(:thumb).to_s == ""
+    = image_tag("avatar.png", size: "50x50", alt: "Avatar")
+  -else
+    = image_tag("#{ @post.user.image_url(:thumb)}")
+  .nm
+    =  @post.user.username
+  .ta
+    = "Posted #{time_ago_in_words( @post.created_at)} ago."
+  %br
+  %b
+    = link_to  @post.topik, post_path( @post.id)
+  %br
+  = @post.content
+  %br

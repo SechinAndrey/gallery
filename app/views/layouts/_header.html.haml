@@ -7,6 +7,8 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
+            = link_to "Create post", new_post_path
+          %li
             = link_to "Edit profile", edit_user_registration_path
           %li
             = link_to("LogOut", destroy_user_session_path, :method => :delete)

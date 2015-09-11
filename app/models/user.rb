@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  has_many :identity, :dependent => :destroy
+  has_many :posts, :dependent => :destroy
+
+
   mount_uploader :image, ImageUploader
 
   # Include default devise modules. Others available are:
@@ -9,8 +13,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :authentication_keys => [:login]
-
-  has_many :identity, :dependent => :destroy
 
 
   validates :username,

@@ -1,0 +1,20 @@
+- @posts.each do |pst|
+  %br
+  -if pst.user.image_url(:thumb).to_s == ""
+    = image_tag("avatar.png", size: "50x50", alt: "Avatar")
+  -else
+    = image_tag("#{pst.user.image_url(:thumb)}")
+  .name
+    = pst.user.username
+  .time_ago
+    = "Posted #{time_ago_in_words(pst.created_at)} ago."
+  %br
+  %b
+    = link_to pst.topik, post_path(pst.id)
+  %br
+  - if pst.content.length < 150
+    = pst.content
+  -else
+    = pst.content[0..140]
+    = link_to "more...", post_path(pst.id)
+  %br
