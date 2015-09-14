@@ -2,14 +2,6 @@ Gallery::Application.routes.draw do
 
   root 'posts#index'
 
-  get 'identity/destroy'
-
-  #get 'home_page/index'
-
-  get 'home_page/about'
-
-  get 'home_page/help'
-
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   devise_for :users, :controllers => { registrations: 'registrations',
@@ -19,6 +11,8 @@ Gallery::Application.routes.draw do
                                      }
 
   resources :posts
+  resources :comments
+  resources :identities, only: [:destroy]
 
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -29,7 +23,6 @@ Gallery::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

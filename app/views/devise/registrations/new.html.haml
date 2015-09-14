@@ -7,10 +7,12 @@
       = #devise_error_messages!
       .form-group
         = f.label :username,  value: "login"
+        %em (20 characters maximum)
         %br/
         = f.text_field :username, class: "form-control", autofocus: true
       .form-group
         =f.label :name
+        %em (40 characters maximum)
         %br/
         = f.text_field :name, class: "form-control", value:  params[:name] ||= ""
       .form-group

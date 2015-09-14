@@ -1,5 +1,14 @@
 module RegistrationsHelper
 
+  def bounds_acc(provider)
+    identity = Identity.acc(provider, resource.id)
+    if !identity
+      p link_to "Bound account #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+    else
+      p link_to "Unbound account #{provider.to_s.titleize}", identity, :method => :delete
+    end
+  end
+
   def reg_name
    return $temp_user.nil? ? "" : $temp_user.info.name.to_s
 

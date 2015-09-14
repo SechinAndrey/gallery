@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
-  has_many :identity, :dependent => :destroy
+  has_many :identities, :dependent => :destroy
   has_many :posts, :dependent => :destroy
-
+  has_many :comments, :dependent => :destroy
 
   mount_uploader :image, ImageUploader
 
@@ -15,11 +15,11 @@ class User < ActiveRecord::Base
          :authentication_keys => [:login]
 
 
-  validates :username,
-            :presence => true,
+  validates :username, :presence => true,
             :uniqueness => {
                 :case_sensitive => false
-            } # etc.
+            }, length: { maximum: 20} # etc.
+  validates :name, presence: true, length: { maximum: 40}
 
   def login=(login)
     @login = login

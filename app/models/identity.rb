@@ -7,11 +7,7 @@ class Identity < ActiveRecord::Base
     find_or_create_by(uid: auth.uid, provider: auth.provider)
   end
 
-  def self.unbound_acc(provider, id)
-    self.find_by(provider: provider, user_id: id).destroy
-  end
-
   def self.acc(provider, id)
-    find_by(provider: provider, user_id: id).nil? ? false : true
-  end
+    i = find_by(provider: provider, user_id: id)
+    i.nil? ? false : i  end
 end

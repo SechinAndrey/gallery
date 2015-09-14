@@ -8,10 +8,12 @@
       = #devise_error_messages!
       .form-group
         = f.label :username, value: "login"
+        %em (20 characters maximum)
         %br/
         = f.text_field :username, class: "form-control",autofocus: true
       .form-group
         =f.label :name
+        %em (40 characters maximum)
         %br/
         = f.text_field :name, class: "form-control"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -44,11 +46,8 @@
       .form-group
         = f.submit "Update", class: "btn btn-default"
       - resource_class.omniauth_providers.each do |provider|
-        -if !Identity.acc(provider, resource.id)
-          = link_to "Bound account #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
-        -else
-          = link_to "Unbound account #{provider.to_s.titleize}", identity_destroy_path({provider: provider, id: resource.id})
-        %br/
+        %br
+        = bounds_acc(provider)
     %h3 Cancel my account
     %p
       Unhappy? #{button_to "Cancel my account", registration_path(resource_name), class: "btn btn-default", data: { confirm: "Are you sure?" }, method: :delete}

@@ -1,0 +1,15 @@
+.div_new_comm
+  %h4 What do you think of it?
+  .hr_margin
+    %hr
+  = form_for @post.comments.new do |f|
+    = render 'shared/error_messages', object: f.object
+    = f.hidden_field :post_id, value: @post.id
+    .form-group
+      = f.label :content,  value: "Content"
+      %br/
+      = f.text_area :content, class: "form-control", rows: "2"
+      %br/
+      = link_to "Back", :back
+      .crt_comment
+        = f.submit "Comment", class: "btn btn-primary"

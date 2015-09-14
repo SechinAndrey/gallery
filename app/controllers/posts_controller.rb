@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = Comment.paginate(:page => params[:page], :per_page => 2).where(post_id: params[:id]).order('created_at DESC')
   end
 
   def new
@@ -18,7 +19,9 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path
     else
-      flash[:alert] = "Fill in all the fields."
+      @post.errors.full_messages.each do |msg|
+      flash[:alert] =  msg
+      end
       redirect_to new_post_path
     end
   end
