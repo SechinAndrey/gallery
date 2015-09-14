@@ -239,11 +239,11 @@ Devise.setup do |config|
   #p "*"*100
   #p ENV["fb_key"]
 
-  #config.omniauth :facebook, '1023023417728988', 'ed08088800d910a0dc7dea33f9915323'#ENV['fb_key'], ENV['fb_secret_key']
-  #config.omniauth :vkontakte, '5048143', 'WOfYmpqY4cw24M42E5Jg' #ENV['vk_key'], ENV['vk_secret_key']
+  config.omniauth :facebook, '1023023417728988', 'ed08088800d910a0dc7dea33f9915323'#ENV['fb_key'], ENV['fb_secret_key']
+  config.omniauth :vkontakte, '5048143', 'WOfYmpqY4cw24M42E5Jg' #ENV['vk_key'], ENV['vk_secret_key']
 
-  config.omniauth :facebook, ENV['fb_key'], ENV['fb_secret_key']
-  config.omniauth :vkontakte, ENV['vk_key'], ENV['vk_secret_key']
+  #config.omniauth :facebook, ENV['fb_key'], ENV['fb_secret_key']
+  #config.omniauth :vkontakte, ENV['vk_key'], ENV['vk_secret_key']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

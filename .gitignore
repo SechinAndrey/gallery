@@ -22,3 +22,6 @@ doc/
 .secret
 # Ignore application configuration
 /config/application.yml
+
+# Игнорирование аватарок
+/public/uploads/user/image
