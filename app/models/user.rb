@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_save :my_skip_confirm
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -20,6 +22,7 @@ class User < ActiveRecord::Base
                 :case_sensitive => false
             }, length: { maximum: 20} # etc.
   validates :name, presence: true, length: { maximum: 40}
+  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   def login=(login)
     @login = login
@@ -37,12 +40,6 @@ class User < ActiveRecord::Base
       where(conditions.to_h).first
     end
   end
-
-
-
-
-
-  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -88,5 +85,9 @@ class User < ActiveRecord::Base
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def my_skip_confirm
+    #self.skip_reconfirmation!
   end
 end

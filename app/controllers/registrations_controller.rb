@@ -4,6 +4,13 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def create
+    super
+    #resource.send_confirmation_instructions
+    sign_in(resource)
+
+  end
+
   private
 
   def sign_up_params
