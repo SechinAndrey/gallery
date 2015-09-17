@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = Comment.paginate(:page => params[:page], :per_page => 2).where(post_id: params[:id]).order('created_at DESC')
+    @comments = Comment.paginate(:page => params[:page], :per_page => 10).where(post_id: params[:id]).order('created_at DESC')
   end
 
   def new

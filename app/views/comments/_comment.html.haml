@@ -1,4 +1,4 @@
-%li.comment
+%li.comment{id: cmnt.id}
   %br
   -if cmnt.user.image_url(:thumb).to_s == ""
     = image_tag("avatar.png", size: "50x50", alt: "Avatar")
@@ -8,7 +8,7 @@
     = cmnt.user.username
   .time_ago
     = "Commented #{time_ago_in_words(cmnt.created_at)} ago."
-    = link_to "delete", cmnt,method: :delete
+    = link_to "delete", cmnt, remote: true, method: :delete
   %br
     .clip
       = cmnt.content

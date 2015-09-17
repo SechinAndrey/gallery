@@ -1,17 +1,22 @@
 %nav.navbar.navbar-default
   .container-fluid
-    %p.navbar-text.greeting_menu
-      = mini_avatar
-      .navbar-brand
-        = greeting
-      %ul.nav.navbar-nav.navbar-right
-        - if user_signed_in?
-          %li
-            = link_to "Create post", new_post_path
-          %li
-            = link_to "Edit profile", edit_user_registration_path
-          %li
-            = link_to("LogOut", destroy_user_session_path, :method => :delete)
-        -else
-          %li
-            = link_to "Log in", new_session_path(:user)
+    %ul.nav.navbar-nav.navbar-left
+      %li
+        = link_to "Gallery", root_path
+      - if user_signed_in?
+        %li
+          = link_to "Create post", new_post_path
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        %li
+          = mini_avatar
+        %li
+          .navbar-text
+            = greeting
+        %li
+          = link_to "Edit profile", edit_user_registration_path
+        %li
+          = link_to("LogOut", destroy_user_session_path, :method => :delete)
+      -else
+        %li
+          = link_to "Log in", new_session_path(:user)

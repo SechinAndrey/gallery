@@ -2,8 +2,9 @@
   %h4 What do you think of it?
   .hr_margin
     %hr
+  .error_area
+
   = form_for @post.comments.new, remote: true do |f|
-    = render 'shared/error_messages', object: f.object
     = f.hidden_field :post_id, value: @post.id
     .form-group
       = f.label :content,  value: "Content"
