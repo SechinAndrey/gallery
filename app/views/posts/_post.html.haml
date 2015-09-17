@@ -8,6 +8,8 @@
       =  @post.user.username
     .time_ago
       = "Posted #{time_ago_in_words( @post.created_at)} ago."
+      -if user_signed_in? && current_user.id == @post.user.id
+        = link_to "delete", @post, method: :delete
     %br
     %b
       = link_to  @post.topik, post_path( @post.id)

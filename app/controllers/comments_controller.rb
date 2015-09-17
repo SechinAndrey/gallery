@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
 
-
-
   def create
     if user_signed_in?
       @comment = current_user.comments.build(comment_params)
@@ -31,7 +29,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if user_signed_in?
+    if user_signed_in? && current_user.id == cmnt.user.id
       @comment = Comment.find(params[:id])
       @comment.destroy
       respond_to do |format|

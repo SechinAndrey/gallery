@@ -30,6 +30,15 @@ class PostsController < ApplicationController
 
   end
 
+  def destroy
+    if user_signed_in? && current_user.id == @post.user.id
+      @post = Post.find(params[:id])
+      if @post.destroy
+        redirect_to root_path
+      end
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:topik, :content, :user_id)
