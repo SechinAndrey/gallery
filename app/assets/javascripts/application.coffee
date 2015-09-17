@@ -14,3 +14,10 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require_tree .
+
+
+#$(document).ready ->
+#  console.log
+#  $( "#new_comment" ).submit (event) ->
+#    alert( "Handler for .submit() called." )
+#    event.preventDefault()

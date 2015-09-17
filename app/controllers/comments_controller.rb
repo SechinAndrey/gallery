@@ -1,32 +1,42 @@
 class CommentsController < ApplicationController
 
+
+
   def create
-    @comment = current_user.comments.build(comment_params)
-    # if
-    @comment.save
+    if user_signed_in?
+      @comment = current_user.comments.build(comment_params)
+      @comment.save
+      post_comment = Comment.where(post_id: @comment.post.id).order('created_at DESC')
+      @page = params[:comment][:page]
+
+      if post_comment.length > 10 && @page == ''
+        @page = 1
+      end
+
+      if @page != ''
+        index = (@page.to_i - 1) * 10
+        @comment = post_comment[index.to_i]
+      end
+
+      if post_comment.length/10 + 1 == @page.to_i
+        @page = ''
+      end
 
       respond_to do |format|
         format.html { post_path(@comment.post.id) }
         format.js
       end
-    # else
-    #   p "2" *100
-    #   @comment.errors.full_messages.each do |msg|
-    #     p "********************************  " + msg
-    #     flash[:alert] = msg
-    #     redirect_to root_path
-    #     p "3"*100
-    #   end
-    #
-    # end
+
+    end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    post_id = @comment.post.id
-    @comment.destroy
-    respond_to do |format|
-      format.js
+    if user_signed_in?
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+      respond_to do |format|
+        format.js
+      end
     end
 
   end

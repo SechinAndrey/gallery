@@ -6,6 +6,7 @@
 
   = form_for @post.comments.new, remote: true do |f|
     = f.hidden_field :post_id, value: @post.id
+    = f.hidden_field :page, value: params[:page]
     .form-group
       = f.label :content,  value: "Content"
       %br/

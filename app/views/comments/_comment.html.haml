@@ -8,7 +8,8 @@
     = cmnt.user.username
   .time_ago
     = "Commented #{time_ago_in_words(cmnt.created_at)} ago."
-    = link_to "delete", cmnt, remote: true, method: :delete
+    -if user_signed_in? && current_user.id == cmnt.user.id
+      = link_to "delete", cmnt, remote: true, method: :delete
   %br
     .clip
       = cmnt.content
