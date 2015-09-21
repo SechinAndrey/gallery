@@ -3,3 +3,9 @@
   .col-md-4
     = render 'posts/posts'
     = will_paginate renderer: BootstrapPagination::Rails
+  .col-md-1
+  .col-md-2
+    %b
+      All tags
+    %br
+      = render 'tags/tags'

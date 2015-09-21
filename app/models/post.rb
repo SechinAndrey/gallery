@@ -5,4 +5,5 @@ class Post < ActiveRecord::Base
   validates :topik,  presence: true, length: { maximum: 150}
   validates :content,  presence: true, length: { maximum: 10000}
   validates :user_id,  presence: true
+  acts_as_taggable
 end

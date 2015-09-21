@@ -1,4 +1,4 @@
-.div_post
+.div_post.clip
   %br
     -if @post.user.image_url(:thumb).to_s == ""
       = image_tag("avatar.png", size: "50x50", alt: "Avatar")
@@ -14,6 +14,6 @@
     %b
       = link_to  @post.topik, post_path( @post.id)
     %br
-      .clip
-        = @post.content
+    Tags: #{ raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
     %br
+      = @post.content

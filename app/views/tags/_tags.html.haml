@@ -1,0 +1,4 @@
+.list-group
+  - @tags.each do |tags|
+    .list-group-item.clip
+      = link_to tags, tag_path(tags.name)

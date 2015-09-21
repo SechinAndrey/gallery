@@ -11,7 +11,10 @@
           (150 characters maximum)
         %br/
         = f.text_field :topik, class: "form-control", autofocus: true, maxlength: "150"
+      .form-group
+        = f.label :tag_list
         %br/
+        = f.text_field :tag_list, class: "form-control"
       .form-group
         = f.label :content,  value: "Content"
         %em

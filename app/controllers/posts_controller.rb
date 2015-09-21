@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :only_sign_in, only: [:new, :create]
 
   def index
-    @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    if params[:tag]
+      @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC').tagged_with(params[:tag])
+    else
+      @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    end
+    @tags = Post.tag_counts_on(:tags)
   end
 
   def show
@@ -41,7 +46,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:topik, :content, :user_id)
+    params.require(:post).permit(:topik, :content, :user_id, :tag_list)
   end
 
 end
