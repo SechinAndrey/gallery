@@ -1,1 +1,11 @@
 $('#' + <%=@comment.id%>).remove()
+<%if !@comment_last.nil?%>
+    $('.comments').append("<%= escape_javascript(render('comments/comment', cmnt: @comment_last))%>")
+<%end%>
+
+
+
+//if($(".comments li"))
+//{
+//
+//}

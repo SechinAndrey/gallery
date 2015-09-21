@@ -24,4 +24,4 @@ doc/
 /config/application.yml
 
 # Игнорирование аватарок
-/public/uploads/user
+

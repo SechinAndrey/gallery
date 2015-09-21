@@ -29,9 +29,18 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if user_signed_in? && current_user.id == cmnt.user.id
-      @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @page = params[:page] || 1
+    @comment_last = nil
+
+    if user_signed_in? && current_user.id == @comment.user.id
       @comment.destroy
+      post_comment = Comment.where(post_id: @comment.post.id).order('created_at DESC')
+
+      if post_comment.length >= 10
+        @comment_last = post_comment[(@page.to_i) * 10 - 1]
+      end
+
       respond_to do |format|
         format.js
       end

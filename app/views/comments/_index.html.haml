@@ -1,8 +1,10 @@
--if !@comments.empty?
-  %h4 Comments
-  .hr_margin
-    %hr
-  %ul.comments
-    - @comments.each do |cmnt|
-      = render 'comments/comment', :cmnt => cmnt
-  = will_paginate @comments, renderer: BootstrapPagination::Rails
+%h4 Comments
+.hr_margin
+  %hr
+-if @comments.empty?
+  .alert.alert-info
+    No comments yet.
+%ul.comments
+  - @comments.each do |cmnt|
+    = render 'comments/comment', :cmnt => cmnt
+= will_paginate @comments, renderer: BootstrapPagination::Rails

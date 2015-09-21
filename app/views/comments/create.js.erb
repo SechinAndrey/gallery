@@ -1,12 +1,11 @@
-<% if !@comment.nil? && @comment.errors.any? %>
+<%if !@comment.nil? && @comment.errors.any? %>
     $(".error_area").html("<%= escape_javascript(render('shared/error_messages', :object => @comment)) %>")
 <%else%>
     $(".comments").prepend("<%= escape_javascript(render('comments/comment', :cmnt => @comment)) %>")
     $(".error_area").html("")
     $("#comment_content").val("")
-
+    $(".alert").remove()
     <%if @page != ''%>
         $('.comments li:last').remove()
     <%end%>
-
 <%end%>
