@@ -10,8 +10,10 @@
  *
  *= require_self
  *= require_tree .
+ *= require bootstrap-tagsinput
  */
-@import "bootstrap";
+
+  @import "bootstrap";
 
 .row{
   margin-right: 0px !important;

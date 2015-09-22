@@ -14,6 +14,8 @@ gem "rmagick"
 
 gem "will_paginate", "~> 3.0.4"
 gem 'will_paginate-bootstrap'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'bootstrap-tagsinput-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks'

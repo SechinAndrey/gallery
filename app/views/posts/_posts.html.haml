@@ -1,7 +1,7 @@
 - @posts.each do |pst|
-  .div_posts
+  .div_posts.clip
     %br
-    -if pst.user.image_url(:thumb).to_s == ""
+    -if pst.user.image.thumb.blank? || !pst.user.image.thumb.file.exists?
       = image_tag("avatar.png", size: "50x50", alt: "Avatar")
     -else
       = image_tag("#{pst.user.image_url(:thumb)}")
@@ -13,6 +13,7 @@
     %b
       = link_to pst.topik, post_path(pst.id)
     %br
-      .clip
-        = show_content(pst).html_safe
+      Tags: #{ raw pst.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
+      %br
+      = show_content(pst).html_safe
     %br

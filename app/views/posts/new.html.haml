@@ -3,15 +3,17 @@
   .col-md-6
     %h2 Create post
     = form_for @post do |f|
-      = #render 'shared/error_messages', object: f.object
-      = #devise_error_messages!
       .form-group
         = f.label :topik,  value: "Topic"
         %em
           (150 characters maximum)
         %br/
         = f.text_field :topik, class: "form-control", autofocus: true, maxlength: "150"
+      .form-group
+        = f.label :tag_list
         %br/
+        .test
+          = f.text_field :tag_list,'data-role'=>'tagsinput',class: "form-control"
       .form-group
         = f.label :content,  value: "Content"
         %em
