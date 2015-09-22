@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+gem 'activeadmin', '~> 1.0.0.pre1'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
