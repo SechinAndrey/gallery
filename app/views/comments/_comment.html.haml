@@ -1,6 +1,6 @@
 %li.comment{id: cmnt.id}
   %br
-    -if cmnt.user.image_url(:thumb).to_s == ""
+    -if cmnt.user.image.thumb.blank? || !cmnt.user.image.thumb.file.exists?
       = image_tag("avatar.png", size: "50x50", alt: "Avatar")
     -else
       = image_tag("#{cmnt.user.image_url(:thumb)}")

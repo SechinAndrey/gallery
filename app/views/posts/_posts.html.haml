@@ -1,7 +1,7 @@
 - @posts.each do |pst|
   .div_posts.clip
     %br
-    -if pst.user.image_url(:thumb).to_s == ""
+    -if pst.user.image.thumb.blank? || !pst.user.image.thumb.file.exists?
       = image_tag("avatar.png", size: "50x50", alt: "Avatar")
     -else
       = image_tag("#{pst.user.image_url(:thumb)}")

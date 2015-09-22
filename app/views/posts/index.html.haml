@@ -6,6 +6,8 @@
   .col-md-1
   .col-md-2
     %b
-      All tags
+      -if !@tags.empty?
+        20 popular tags
+    %br
     %br
       = render 'tags/tags'

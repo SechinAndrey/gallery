@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
     end
-    @tags = Post.tag_counts_on(:tags)
+    @tags = Post.tag_counts_on(:tags).most_used(20)
   end
 
   def show

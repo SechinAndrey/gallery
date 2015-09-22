@@ -1,9 +1,9 @@
 .div_post.clip
   %br
-    -if @post.user.image_url(:thumb).to_s == ""
+    -if @post.user.image.thumb.blank? || !@post.user.image.thumb.file.exists?
       = image_tag("avatar.png", size: "50x50", alt: "Avatar")
     -else
-      = image_tag("#{ @post.user.image_url(:thumb)}")
+      = image_tag("#{@post.user.image_url(:thumb)}")
     .name
       =  @post.user.username
     .time_ago
