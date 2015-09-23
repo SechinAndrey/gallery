@@ -70,16 +70,6 @@ ActiveRecord::Schema.define(version: 20150922160540) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "post_tags", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "post_tags", ["post_id"], name: "index_post_tags_on_post_id", using: :btree
-  add_index "post_tags", ["tag_id"], name: "index_post_tags_on_tag_id", using: :btree
-
   create_table "posts", force: :cascade do |t|
     t.string   "topik"
     t.string   "content"
@@ -148,7 +138,5 @@ ActiveRecord::Schema.define(version: 20150922160540) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
-  add_foreign_key "post_tags", "posts"
-  add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "users"
 end
