@@ -17,7 +17,7 @@
         = f.label :username, value: "login"
         %em (20 characters maximum)
         %br/
-        = f.text_field :username, class: "form-control", value: "", :autofocus => true
+        = f.text_field :username, class: "form-control", value: "", :autofocus => true, maxlength: "20"
       .form-group
         = f.label :email
         .controls

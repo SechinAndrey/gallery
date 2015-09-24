@@ -1,12 +1,18 @@
 class PostsController < ApplicationController
   before_action :only_sign_in, only: [:new, :create]
 
+  # caches_action :index, :cache_path => Proc.new {|c| c.request.url }
+
+
   def index
+    @search = Post.search(params[:q])
+
     if params[:tag]
       @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC').tagged_with(params[:tag])
     else
-      @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+      @posts = @search.result.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
     end
+
     @tags = Post.tag_counts_on(:tags).most_used(20)
   end
 
@@ -20,6 +26,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    # expire_action action: 'index'
     @post = current_user.posts.build(post_params)
     if @post.save
       @post_event = PostEvent.new(user_id: current_user.id, username: current_user.username, post_id: @post.id, post_name: @post.topik, action: "Create post")
@@ -38,6 +45,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # expire_action action: 'index'
     @post = Post.find(params[:id])
     @post_event = PostEvent.new(user_id: current_user.id, username: current_user.username, post_id: @post.id, post_name: @post.topik, action: "Delete post")
     if user_signed_in? && current_user.id == @post.user.id

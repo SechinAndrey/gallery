@@ -6,5 +6,6 @@
     No comments yet.
 %ul.comments
   - @comments.each do |cmnt|
-    = render 'comments/comment', :cmnt => cmnt
+    -cache cmnt do
+      = render 'comments/comment', :cmnt => cmnt
 = will_paginate @comments, renderer: BootstrapPagination::Rails

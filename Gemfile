@@ -25,7 +25,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'activeadmin', '~> 1.0.0.pre1'
 
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
 
+gem 'ransack'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

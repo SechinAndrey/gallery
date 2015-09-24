@@ -13,11 +13,11 @@
       %tr
         %td
           = pst_ev.username
-        %td
+        %td.min_column_width
           = pst_ev.action
         %td.column_width
           -if post_exist?(pst_ev.post_id)
-            = link_to pst_ev.post_name, posts_path(pst_ev.post_id)
+            = link_to pst_ev.post_name, post_path(pst_ev.post_id)
           -else
             = pst_ev.post_name
         %td
