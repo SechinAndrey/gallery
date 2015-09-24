@@ -22,6 +22,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      @post_event = PostEvent.new(user_id: current_user.id, username: current_user.username, post_id: @post.id, post_name: @post.topik, action: "Create post")
+      @post_event.save
       redirect_to root_path
     else
       @post.errors.full_messages.each do |msg|
@@ -37,8 +39,10 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @post_event = PostEvent.new(user_id: current_user.id, username: current_user.username, post_id: @post.id, post_name: @post.topik, action: "Delete post")
     if user_signed_in? && current_user.id == @post.user.id
       if @post.destroy
+        @post_event.save
         redirect_to root_path
       end
     end

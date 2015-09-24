@@ -1,0 +1,25 @@
+.div_posts.clip
+  %table.table
+    %tr
+      %th
+        User
+      %th
+        Action
+      %th
+        PostTopic
+      %th
+        Date
+    - @post_events.each do |pst_ev|
+      %tr
+        %td
+          = pst_ev.username
+        %td
+          = pst_ev.action
+        %td.column_width
+          -if post_exist?(pst_ev.post_id)
+            = link_to pst_ev.post_name, posts_path(pst_ev.post_id)
+          -else
+            = pst_ev.post_name
+        %td
+          = pst_ev.created_at
+
