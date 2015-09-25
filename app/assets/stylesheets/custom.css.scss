@@ -82,18 +82,22 @@ ul.ui-autocomplete {
   padding: 0;
   border: solid 1px #999;
   cursor: default;
+  height: 30px;
   li {
     background-color: #FFF;
     border-top: solid 1px #DDD;
     margin: 0;
-    padding: 0;
+    padding-left: 10px;
+    height: 30px;
     a {
       color: #000;
       display: block;
       padding: 3px;
+      height: 30px;
     }
     a.ui-state-hover, a.ui-state-active {
       background-color: #FFFCB2;
+      height: 30px;
     }
   }
 }

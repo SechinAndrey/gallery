@@ -1,6 +1,6 @@
 .mrg_up
   = search_form_for @search do |f|
     .input-group
-      = f.text_field :topik_cont, data: { autocomplete_source: Post.order(:topik).map(&:topik) }, class: "form-control"
+      = f.text_field :topik_cont, data: { autocomplete_source: Post.order(:topik).map(&:topik) }, class: "form-control", placeholder: "type post topic for search..."
       %span.input-group-btn
         = f.submit "Search", class: "btn btn-primary"

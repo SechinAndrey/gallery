@@ -5,7 +5,7 @@
       -if pst.user.image.thumb.blank? || !pst.user.image.thumb.file.exists?
         = image_tag("avatar.png", size: "50x50", alt: "Avatar")
       -else
-        = image_tag("#{pst.user.image_url(:thumb)}")
+        = image_tag("#{pst.user.image_url(:thumb)}", class: "img-circle")
       .name
         = pst.user.username
       .time_ago
