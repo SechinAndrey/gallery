@@ -3,7 +3,8 @@
   .col-md-4
     = render 'posts/search_post_form'
     = render 'posts/posts'
-    = will_paginate renderer: BootstrapPagination::Rails
+    = paginate @posts, :theme => 'twitter-bootstrap-3'
+    = #will_paginate renderer: BootstrapPagination::Rails
   .col-md-1
   .col-md-2
     %b
