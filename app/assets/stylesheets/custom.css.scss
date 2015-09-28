@@ -8,6 +8,7 @@
 
 /* Вывод ошибок */
 @import "bootstrap";
+
 #error_explanation {
   color: #f00;
   ul {
@@ -65,9 +66,6 @@
   margin: 0;
 }
 
-.test{
-  width: 500px;
-}
 .column_width{
   max-width: 400px;
 }
@@ -96,12 +94,13 @@ ul.ui-autocomplete {
       height: 30px;
     }
     a.ui-state-hover, a.ui-state-active {
-      background-color: #FFFCB2;
+      background-color: #428bca;
       height: 30px;
     }
   }
 }
-
-.mrg_up{
-  margin-top: 8px ;
+.ui-menu-item.ui-state-focus
+{
+  background-color:  #337ab7;
+  color: white;
 }

@@ -5,12 +5,15 @@ class PostsController < ApplicationController
 
 
   def index
-    @search = Post.search(params[:q])
+    @search = Post.search("")
 
     if params[:tag]
       @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC').tagged_with(params[:tag])
     else
       @posts = @search.result.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+      if !params[:q].nil?
+        @posts = @search.result.tagged_with(params[:q][:topik_cont], :any => true).paginate(:page => params[:page], :per_page => 10)
+      end
     end
 
     @tags = Post.tag_counts_on(:tags).most_used(20)

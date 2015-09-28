@@ -3,15 +3,12 @@ Gallery::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'posts#index'
-
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-
   devise_for :users, :controllers => { registrations: 'registrations',
                                        omniauth_callbacks: "users/omniauth_callbacks",
                                        sessions: 'sessions',
                                        confirmations: 'confirmations'
                                      }
-
   resources :posts
   resources :comments
   resources :identities, only: [:destroy]
