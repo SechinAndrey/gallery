@@ -2,18 +2,18 @@
   .col-md-4
   .col-md-4
     %h2
-      Edit #{resource_name.to_s.humanize}
+      #{t 'registrations.edit.lb_top_title'}
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = render 'shared/error_messages', object: f.object
       = #devise_error_messages!
       .form-group
-        = f.label :username, value: "login"
-        %em (20 characters maximum)
+        = f.label :username
+        %em (20 #{t 'registrations.edit.i_max_char'})
         %br/
         = f.text_field :username, class: "form-control",autofocus: true
       .form-group
         =f.label :name
-        %em (40 characters maximum)
+        %em (40 #{t 'registrations.edit.i_max_char'})
         %br/
         = f.text_field :name, class: "form-control"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -28,7 +28,7 @@
           Currently waiting confirmation for: #{resource.unconfirmed_email}
       .form-group
         = f.label :password
-        %i (leave blank if you don't want to change it)
+        %i ( #{t 'registrations.edit.i_password'})
         %br/
         = f.password_field :password, autocomplete: "off", class: "form-control"
       .form-group
@@ -37,18 +37,17 @@
         = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
       .form-group
         = f.label :current_password
-        %i (we need your current password to confirm your changes)
+        %i (#{t 'registrations.edit.i_current_password'})
         %br/
         = f.password_field :current_password, autocomplete: "off", class: "form-control"
       .form-group
-        = f.label :image, value: "Change avatar"
+        = f.label :image
         = f.file_field :image
       .form-group
-        = f.submit "Update", class: "btn btn-default"
+        = f.submit "#{t 'registrations.edit.b_update'}", class: "btn btn-default"
       - resource_class.omniauth_providers.each do |provider|
-        %br
         = bounds_acc(provider)
-    %h3 Cancel my account
-    %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), class: "btn btn-default", data: { confirm: "Are you sure?" }, method: :delete}
-    = link_to "Back", :back
+        %p
+        = button_to "#{t 'registrations.edit.b_cancel'}", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete
+        %p
+        = link_to "#{t 'registrations.edit.l_back'}", :back

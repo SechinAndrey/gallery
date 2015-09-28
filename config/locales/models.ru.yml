@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+        attributes:
+          user:
+            username: "Логин"
+            name: "Имя"
+            email: "Почта"
+            password: "Пароль"
+            password_confirmation: "Подтверждение пароля"
+            current_password: "Текущий пароль"
+            image: "Изменить аватар"

@@ -1,0 +1,14 @@
+en:
+  registrations:
+    edit:
+      b_update: "Update"
+      b_cancel: "Cancel my account"
+      lb_top_title: "Edit profile"
+      lb_cancel_acc: Cancel account
+      l_unbound: "tie"
+      l_bound: "untie"
+      l_back: "Back"
+      i_max_char: "characters maximum"
+      i_password: "leave blank if you don't want to change it"
+      i_current_password: "we need your current password to confirm your changes"
+    new:

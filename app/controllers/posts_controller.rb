@@ -8,11 +8,11 @@ class PostsController < ApplicationController
     @search = Post.search("")
 
     if params[:tag]
-      @posts = Kaminari.paginate_array(Post.tagged_with(params[:tag]).order('created_at DESC')).page(params[:page]).per(5) # Post.order('created_at DESC').page(params[:page]).per(10)
+      @posts = Kaminari.paginate_array(Post.tagged_with(params[:tag]).order('created_at DESC')).page(params[:page]).per(10) # Post.order('created_at DESC').page(params[:page]).per(10)
     else
-      @posts = Kaminari.paginate_array(@search.result.order('created_at DESC')).page(params[:page]).per(5) #@search.result.order('created_at DESC').limit(10).page(params[:page])
+      @posts = Kaminari.paginate_array(@search.result.order('created_at DESC')).page(params[:page]).per(10) #@search.result.order('created_at DESC').limit(10).page(params[:page])
       if !params[:q].nil?
-        @posts = Kaminari.paginate_array(@search.result.tagged_with(params[:q][:topik_cont], :any => true).order('created_at DESC')).page(params[:page]).per(5) # @search.result.tagged_with(params[:q][:topik_cont], :any => true).order('created_at DESC').page(params[:page]).per(10)
+        @posts = Kaminari.paginate_array(@search.result.tagged_with(params[:q][:topik_cont], :any => true).order('created_at DESC')).page(params[:page]).per(10) # @search.result.tagged_with(params[:q][:topik_cont], :any => true).order('created_at DESC').page(params[:page]).per(10)
       end
     end
 
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = Kaminari.paginate_array(Comment.order('created_at DESC')).page(params[:page]).per(5) #Comment.order('created_at DESC').page(params[:page]).per(10)
+    @comments = Kaminari.paginate_array(Comment.order('created_at DESC')).page(params[:page]).per(10) #Comment.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def new
