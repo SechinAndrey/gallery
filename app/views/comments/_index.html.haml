@@ -1,9 +1,9 @@
-%h4 Comments
+%h4 #{t 'comments.lb_comments'}
 .hr_margin
   %hr
 -if @comments.empty?
   .alert.alert-info
-    No comments yet.
+    #{t 'comments.lb_no_comments'}
 %ul.comments
   - @comments.each do |cmnt|
     -cache cmnt do

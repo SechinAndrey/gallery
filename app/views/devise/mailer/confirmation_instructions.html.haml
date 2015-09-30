@@ -1,4 +1,4 @@
 %p
-  Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+  #{t 'devise.mailer.lb_welcome'} #{@email}!
+%p #{t 'devise.mailer.lb_you_can_confirm_your_account_email'}
+%p= link_to "#{t 'devise.mailer.l_confirm_my_account'}", confirmation_url(@resource, confirmation_token: @token)

@@ -1,7 +1,7 @@
 .row
   .col-md-4
   .col-md-4
-    %h2 Resend confirmation instructions
+    %h2 #{t 'devise.confirmation.lb_resend_confirmation_instructions'}
     = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
       = devise_error_messages!
       .form-group
@@ -10,6 +10,6 @@
         = f.email_field :email, autofocus: true,
         value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control"
       .actions
-        = f.submit "Resend confirmation instructions",  class: "btn btn-default"
+        = f.submit "#{t 'devise.confirmation.b_resend_confirmation_instructions'}",  class: "btn btn-default"
       %br/
     =# render "devise/shared/links"

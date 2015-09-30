@@ -2,9 +2,9 @@ module ApplicationHelper
 
   def greeting
     if user_signed_in?
-      return current_user.name == "" ? "Hello #{current_user.username}" : "Hello #{current_user.name}"
+      return current_user.name == "" ? "#{t 'layouts._header.lb_hello' } #{current_user.username}" : "#{t 'layouts._header.lb_hello' } #{current_user.name}"
     else
-      return "Hello Guest"
+      return "#{t 'layouts._header.lb_hello_guest' }"
     end
   end
 

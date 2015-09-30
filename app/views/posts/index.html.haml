@@ -9,7 +9,7 @@
   .col-md-2
     %b
       -if !@tags.empty?
-        20 popular tags
+        20 #{t 'posts.index.lb_popular_tags'}
     %br
     %br
       = render 'tags/tags'

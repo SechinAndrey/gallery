@@ -1,5 +1,5 @@
 #add-email.container
-  %h1 Finish Sign Up
+  %h1 #{t 'users.lb_finish_fign_up'}
   = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f|
     = render 'shared/error_messages', object: @user
     -# if @show_errors && current_user.errors.any?
@@ -9,24 +9,24 @@
           %br/
     - if !current_user.unconfirmed_email.nil?
       .alert.alert-warning
-        Please confirm your email address.
-      = link_to "Didn't receive confirmation instructions?", new_confirmation_path(current_user)
+        #{t 'users.lb_please_confirm_your_email_address'}
+      = link_to "#{t 'users.lb_didnt_receive_confirmation_instructions'}", new_confirmation_path(current_user)
       %br/
     -else
       .form-group
-        = f.label :username, value: "login"
-        %em (20 characters maximum)
+        = f.label :username
+        %em (20 #{t 'all.i_max_char'})
         %br/
         = f.text_field :username, class: "form-control", value: "", :autofocus => true, maxlength: "20"
       .form-group
         = f.label :email
         .controls
           = f.text_field :email, :value => '', class: 'form-control', placeholder: 'Example: email@me.com'
-          %p.help-block Please confirm your email address. No spam.
+          %p.help-block #{t 'users.h_please_confirm_your_email'}
       .form-group
         = f.label :password
         %em
-          (4 characters minimum)
+          (6 #{t 'all.i_min_char'})
         %br/
         = f.password_field :password, autocomplete: "off", class: "form-control"
         .form-group
@@ -34,4 +34,4 @@
           %br/
           = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
       .actions
-        = f.submit 'Continue', :class => 'btn btn-primary'
+        = f.submit "#{t 'users.b_continue'}", :class => 'btn btn-primary'

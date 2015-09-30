@@ -1,14 +1,23 @@
 %nav.navbar.navbar-default
-  .container-fluid
+  .container-flui
     %ul.nav.navbar-nav.navbar-left
       %li
-        = link_to "Gallery", root_path
+        = link_to "#{t 'layouts._header.l_brand'}", root_path
       - if user_signed_in?
         %li
-          = link_to "Create post", new_post_path
+          = link_to "#{t 'layouts._header.l_create_post'}", new_post_path
         %li
-          = link_to "Post Events",  post_events_path
-    %ul.nav.navbar-nav.navbar-right
+          = link_to "#{t 'layouts._header.l_post_events'}",  post_events_path
+    %ul.nav.navbar-nav.navbar-right#bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %li.dropdown
+        %a.dropdown-toggle{id:"dropdownMenu1", "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :role => "button"}
+          #{t 'layouts._header.lb_lang'}
+          %span.caret
+        %ul.dropdown-menu{'aria-labelledby'=>"dropdownMenu1"}
+          %li
+            = link_to "English", :locale=>'en'
+          %li
+            = link_to "Русский", :locale=>'ru'
       - if user_signed_in?
         %li
           = mini_avatar
@@ -16,9 +25,9 @@
           .navbar-text
             = greeting
         %li
-          = link_to "Edit profile", edit_user_registration_path
+          = link_to "#{t 'layouts._header.l_edit_profile'}", edit_user_registration_path
         %li
-          = link_to("LogOut", destroy_user_session_path, :method => :delete)
+          = link_to("#{t 'layouts._header.l_log_out'}", destroy_user_session_path, :method => :delete)
       -else
         %li
-          = link_to "Log in", new_session_path(:user)
+          = link_to "#{t 'layouts._header.l_log_in'}", new_session_path(:user)

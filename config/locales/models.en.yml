@@ -9,3 +9,8 @@ en:
             password_confirmation: "Password confirmation"
             current_password: "Current password"
             image: "Change avatar"
+          post:
+            topik: "Topic"
+            content: "Content"
+          comment:
+            content: "Comment"

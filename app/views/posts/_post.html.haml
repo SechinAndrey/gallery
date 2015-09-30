@@ -7,13 +7,13 @@
     .name
       =  @post.user.username
     .time_ago
-      = "Posted #{time_ago_in_words( @post.created_at)} ago."
+      = "#{t 'posts.lb_posted'} #{ time_ago_in_words( @post.created_at)} #{t 'all.lb_ago'}."
       -if user_signed_in? && current_user.id == @post.user.id
         = link_to "delete", @post, method: :delete
     %br
     %b
       = link_to  @post.topik, post_path( @post.id)
     %br
-    Tags: #{ raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
+    #{t 'posts.lb_tag_list'}: #{ raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
     %br
       = @post.content

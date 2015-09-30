@@ -1,14 +1,100 @@
 en:
-  registrations:
-    edit:
-      b_update: "Update"
-      b_cancel: "Cancel my account"
-      lb_top_title: "Edit profile"
-      lb_cancel_acc: Cancel account
-      l_unbound: "tie"
-      l_bound: "untie"
-      l_back: "Back"
-      i_max_char: "characters maximum"
-      i_password: "leave blank if you don't want to change it"
-      i_current_password: "we need your current password to confirm your changes"
-    new:
+  all:
+    i_max_char: "characters maximum"
+    i_min_char: "characters minimum"
+    lb_ago: "ago"
+    l_back: "Back"
+  posts:
+    lb_create_post: "Create post"
+    lb_tag_list: "Tags"
+    lb_posted: "Posted"
+    b_create_post: "Create post"
+    index:
+      lb_popular_tags: "popular tags"
+    _search_posts_form:
+      b_search: "Search"
+      p_search: "type post tag for search..."
+  comments:
+    lb_comments: "Comments"
+    lb_no_comments: "No comments yet."
+    lb_commented: "Commented"
+    lb_what_do_you_hink: "What do you think of it?"
+    b_comment: "Comment"
+  layouts:
+    _header:
+      l_brand: "Blog"
+      l_create_post: "Create post"
+      l_post_events: "Post Events"
+      l_edit_profile: "Edit profile"
+      l_log_out: "Log Out"
+      l_log_in: "Log in"
+      lb_hello_guest: "Hello Guest"
+      lb_hello: "Hello"
+      lb_lang: "Language"
+  post_events:
+    lb_user: "User"
+    lb_action: "Action"
+    lb_post_topic: "Post Topic"
+    lb_date: "Date"
+  shared:
+    the_form_contains: "The form contains"
+    error:
+      one: "1 error"
+      other: "%{count} errors"
+  users:
+    lb_finish_fign_up: "Finish Sign Up"
+    lb_please_confirm_your_email_address: "Please confirm your email address."
+    lb_didnt_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+    h_please_confirm_your_email: "Please confirm your email address. No spam."
+    b_continue: "Continue"
+  devise:
+    confirmation:
+      lb_resend_confirmation_instructions: "Resend confirmation instructions"
+      b_resend_confirmation_instructions: "Resend confirmation instructions"
+    mailer:
+      lb_welcome: "Welcome"
+      lb_you_can_confirm_your_account_email: "You can confirm your account email through the link below:"
+      l_confirm_my_account: "Confirm my account"
+      lb_hello: "Hello"
+      lb_someone_has_requested_a_link: "Someone has requested a link to change your password. You can do this through the link below."
+      l_change_my_password: "Change my password"
+      lb_if_you_didnt_request_this: "If you didn't request this, please ignore this email."
+      lb_your_password_wont_change: "Your password won't change until you access the link above and create a new one."
+      lb_your_account_has_been_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+      lb_click_the_link_below_to_unlock_your_account: "Click the link below to unlock your account:"
+      l_unlock_my_account: "Unlock my account"
+    passwords:
+      lb_change_your_password: "Change your password"
+      lb_new_password: "New password"
+      lb_confirm_new_password: "Confirm new password"
+      b_change_my_password: "Change my password"
+      lb_forgot_your_password: "Forgot your password?"
+      b_send_me_reset_password_instructions: "Send me reset password instructions"
+    registrations:
+      edit:
+        b_update: "Update"
+        b_cancel: "Cancel my account"
+        lb_top_title: "Edit profile"
+        l_unbound: "tie"
+        l_bound: "untie"
+        i_password: "leave blank if you don't want to change it"
+        i_current_password: "we need your current password to confirm your changes"
+      new:
+        lb_sign_up: "Sign up"
+        b_sign_up: "Sign up"
+    session:
+      lb_login: "login"
+      lb_log_in: "Log in"
+      b_log_in: "Log in"
+      ch_remember_me: "Remember me"
+    unlocks:
+      lb_resend_unlock_instructions: "Resend unlock instructions"
+      b_resend_unlock_instructions: "Resend unlock instructions"
+    shared:
+      _links:
+        l_log_in: "Log in"
+        l_sign_up: "Sign up"
+        l_forgot_your_password: "Forgot your password?"
+        l_didnt_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+        l_didnt_receive_unlock_instructions: "Didn't receive unlock instructions?"
+        l_sign_in_with: "Sign in with"

@@ -1,14 +1,102 @@
 ru:
-  registrations:
-    edit:
-      b_update: "Обновить данные профиля"
-      b_cancel: "Удалить мой аккаунт"
-      lb_top_title: "Редактирование профиля"
-      lb_cancel_acc: Удалить акаунт
-      l_unbound: "Связать c аккаунтом"
-      l_bound: "Отвязать от аккаунта"
-      l_back: "Назад"
-      i_max_char: "символов максимум"
-      i_password: "оставьте пустым, если вы не хотите его менять"
-      i_current_password: "нам нужен ваш текущий пароль для подтверждения изменений"
-    new:
+  all:
+    i_max_char: "символов максимум"
+    i_min_char: "символов минимум"
+    lb_ago: "назад"
+    l_back: "Назад"
+  posts:
+    lb_create_post: "Создать пост"
+    lb_tag_list: "Теги"
+    lb_posted: "Опубликовано"
+    b_create_post: "Создать пост"
+    index:
+      lb_popular_tags: "популярнейших тегов"
+    _search_posts_form:
+      b_search: "Искть"
+      p_search: "введите тег для поиска поста..."
+  comments:
+    lb_comments: "Комментарии"
+    lb_no_comments: "Пока что нет комментариев."
+    lb_commented: " "
+    lb_what_do_you_hink: "Что вы об этом думаете?"
+    b_comment: "Комметировать"
+  layouts:
+    _header:
+      l_brand: "Blog"
+      l_create_post: "Создать пост"
+      l_post_events: "События потов"
+      l_edit_profile: "Редактировать"
+      l_log_out: "Выйти"
+      l_log_in: "Войти"
+      lb_hello_guest: "Привет Гость"
+      lb_hello: "Привет"
+      lb_lang: "Язык"
+  post_events:
+    lb_user: "Пользователь"
+    lb_action: "Действие"
+    lb_post_topic: "Заголовок поста"
+    lb_date: "Дата"
+  shared:
+    the_form_contains: "Форма содержит"
+    error:
+      zero: "0 ошибок"
+      one: "1 ошибку"
+      few: "%{count} ошибки"
+      many: "%{count} ошибок"
+  users:
+    lb_finish_fign_up: "Завершение регистрации"
+    lb_please_confirm_your_email_address: "Пожалуйста подтвердите адрес вашей электронной почты."
+    lb_didnt_receive_confirmation_instructions: "Не получили письмо с подтверждением?"
+    h_please_confirm_your_email: "Пожалуйста подтвердите адрес вашей электронной почты. Не спам."
+    b_continue: "Продолжить"
+  devise:
+    confirmation:
+      lb_resend_confirmation_instructions: "Повторная отправка инструкции подтверждения"
+      b_resend_confirmation_instructions: "Выслать повторно инструкцию подтверждения"
+    mailer:
+      lb_welcome: "Добро пожаловать"
+      lb_you_can_confirm_your_account_email: "Вы можете подтвердить ваш адрес электронной почты по ссылке ниже:"
+      l_confirm_my_account: "Подтвердить мой аккаунт"
+      lb_hello: "Здравствуйте"
+      lb_someone_has_requested_a_link: "Кто-то просил ссылку, чтобы изменить пароль. Вы можете сделать это через ссылку ниже."
+      l_change_my_password: "Изменить мой пароль"
+      lb_if_you_didnt_request_this: "Если вы не делали этого, пожалуйста, игнорируйте это сообщение."
+      lb_your_password_wont_change: "Ваш пароль не изменится, пока вы не открыть ссылку выше и не создадите новый."
+      lb_your_account_has_been_locked: "Ваш аккаунт был заблокирован из-за чрезмерного количества неудачных попыток входа."
+      lb_click_the_link_below_to_unlock_your_account: "Нажмите на ссылку ниже, чтобы разблокировать свой аккаунт:"
+      l_unlock_my_account: "Разблокировать мой аккаунт"
+    passwords:
+      lb_change_your_password: "Изменение пароля"
+      lb_new_password: "Новый пароль"
+      lb_confirm_new_password: "Повторите новый пароль"
+      b_change_my_password: "Изменить пароль"
+      lb_forgot_your_password: "Забыли свой пароль?"
+      b_send_me_reset_password_instructions: "Отправить мне инструкцию сброса пароля"
+    registrations:
+      edit:
+        b_update: "Обновить данные профиля"
+        b_cancel: "Удалить мой аккаунт"
+        lb_top_title: "Редактировать профиль"
+        l_unbound: "Связать c аккаунтом"
+        l_bound: "Отвязать от аккаунта"
+        i_password: "оставьте пустым, если вы не хотите его менять"
+        i_current_password: "нам нужен ваш текущий пароль для подтверждения изменений"
+      new:
+        lb_sign_up: "Регистрация"
+        b_sign_up: "Зарегестрироваться"
+    session:
+      lb_login: "Логин"
+      lb_log_in: "Вход"
+      b_log_in: "Войти"
+      ch_remember_me: "Запомнить меня"
+    unlocks:
+      lb_resend_unlock_instructions: "Повторно отправить инструкцию разблокирования"
+      b_resend_unlock_instructions: "Отправить инструкцию"
+    shared:
+      _links:
+        l_log_in: "Войти"
+        l_sign_up: "Зарегестрироваться"
+        l_forgot_your_password: "Забыли пароль?"
+        l_didnt_receive_confirmation_instructions: "Не получили письмо с подтверждением?"
+        l_didnt_receive_unlock_instructions: "Не получили инструкцию разблокирования?"
+        l_sign_in_with: "Войти с"

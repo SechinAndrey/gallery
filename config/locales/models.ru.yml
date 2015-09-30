@@ -9,3 +9,8 @@ ru:
             password_confirmation: "Подтверждение пароля"
             current_password: "Текущий пароль"
             image: "Изменить аватар"
+          post:
+            topik: "Заголовок поста"
+            content: "Текс поста"
+          comment:
+            content: "Комментарий"

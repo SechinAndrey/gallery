@@ -1,5 +1,5 @@
 .div_new_comm
-  %h4 What do you think of it?
+  %h4 #{t 'comments.lb_what_do_you_hink'}
   .hr_margin
     %hr
   .error_area
@@ -8,12 +8,12 @@
     = f.hidden_field :post_id, value: @post.id
     = f.hidden_field :page, value: params[:page]
     .form-group
-      = f.label :content,  value: "Comment"
+      = f.label :content
       %em
-        (10000 characters maximum)
+        (10000 #{t 'all.i_max_char'})
       %br/
       = f.text_area :content, class: "form-control", rows: "2", maxlength: "150"
       %br/
       = link_to "Back", :back
       .pull-right
-        = f.submit "Comment", class: "btn btn-primary"
+        = f.submit "#{t 'comments.b_comment'}", class: "btn btn-primary"

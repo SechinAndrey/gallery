@@ -1,5 +1,5 @@
 = search_form_for @search do |f|
   .input-group
-    = f.text_field :topik_cont, data: { autocomplete_source: Post.tag_counts_on(:tags).order(:name).map(&:name) }, class: "form-control", placeholder: "type post tag for search..."
+    = f.text_field :topik_cont, data: { autocomplete_source: Post.tag_counts_on(:tags).order(:name).map(&:name) }, class: "form-control", placeholder: "#{t 'posts._search_posts_form.p_search'}"
     %span.input-group-btn
-      = f.submit "Search", class: "btn btn-primary"
+      = f.submit "#{t 'posts._search_posts_form.b_search'}", class: "btn btn-primary"

@@ -1,26 +1,26 @@
 .row
   .col-md-3
   .col-md-6
-    %h2 Create post
+    %h2 #{t 'posts.lb_create_post'}
     = form_for @post do |f|
       .form-group
-        = f.label :topik,  value: "Topic"
+        = f.label :topik
         %em
-          (150 characters maximum)
+          (150 #{t 'all.i_max_char'})
         %br/
         = f.text_field :topik, class: "form-control", autofocus: true, maxlength: "150"
       .form-group
-        = f.label :tag_list
+        = f.label :tag_list, value: "#{t 'posts.lb_tag_list'}"
         %br/
         .test
           = f.text_field :tag_list,'data-role'=>'tagsinput',class: "form-control"
       .form-group
-        = f.label :content,  value: "Content"
+        = f.label :content
         %em
-          (10000 characters maximum)
+          (10000 #{t 'all.i_max_char'})
         %br/
         = f.text_area :content, class: "form-control", rows: '7', maxlength: "10000"
         %br/
-        = link_to "Back", :back
+        = link_to "#{t 'all.l_back'}", :back
         .pull-right
-          = f.submit "Create post", class: "btn btn-primary"
+          = f.submit "#{t 'posts.b_create_post'}", class: "btn btn-primary"

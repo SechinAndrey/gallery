@@ -7,7 +7,7 @@
     .name
       = cmnt.user.username
     .time_ago
-      = "Commented #{time_ago_in_words(cmnt.created_at)} ago."
+      = "#{t 'comments.lb_commented'} #{time_ago_in_words(cmnt.created_at)} #{t 'all.lb_ago'}"
       -if user_signed_in? && current_user.id == cmnt.user.id
         = link_to "delete", comment_path(id: cmnt.id, page: params[:page]), remote: true, method: :delete
     %br

@@ -1,11 +1,11 @@
 .row
   .col-md-4
   .col-md-4
-    %h2 Log in
+    %h2 #{t 'devise.session.lb_log_in'}
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = render 'shared/error_messages', object: f.object
       .form-group
-        = f.label :login
+        = f.label :login, value: "#{t 'devise.session.lb_login'}"
         %br/
         = f.text_field :login, autofocus: true,  class: "form-control"
       .form-group
@@ -15,7 +15,7 @@
       - if devise_mapping.rememberable?
         .form-group
           = f.check_box :remember_me
-          = f.label :remember_me
+          = f.label :remember_me, value: "#{t 'devise.session.ch_remember_me'}"
       .form-group
-        = f.submit "Log in", class: "btn btn-default"
+        = f.submit "#{t 'devise.session.b_log_in'}", class: "btn btn-default"
     = render "devise/shared/links"

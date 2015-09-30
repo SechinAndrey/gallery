@@ -1,9 +1,7 @@
-- p 'object'*5
-- p object
 - if object.errors.any?
   #error_explanation
     .alert.alert-danger
-      The form contains #{pluralize(object.errors.count, "error")}.
+      #{t 'shared.the_form_contains', :count => object.errors.count} #{t 'shared.error', :count => object.errors.count}.
     %ul
       - object.errors.full_messages.each do |msg|
         %li

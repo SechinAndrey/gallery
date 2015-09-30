@@ -15,6 +15,7 @@
 #= require jquery_ujs
 #= require_tree .
 #= require bootstrap-tagsinput
+#= require bootstrap
 
 
 #$(document).ready ->
