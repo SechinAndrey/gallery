@@ -16,4 +16,15 @@
     %br
     #{t 'posts.lb_tag_list'}: #{ raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
     %br
-      = @post.content
+      - content_analysis @post
+      = @text_arr
+      %table
+        - @img_arr.each do |img|
+          %tr
+            - img.each do |i|
+              %td
+                - if img.count == 1 && @img_arr.count == 1
+                  = image_tag i, class: "image_post_show_one"
+                - else
+                  .image_hidden
+                    = image_tag i, class: "image_post_show_many"

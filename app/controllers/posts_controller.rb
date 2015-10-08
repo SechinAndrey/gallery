@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = Kaminari.paginate_array(Comment.order('created_at DESC')).page(params[:page]).per(10) #Comment.order('created_at DESC').page(params[:page]).per(10)
+    @comments = Kaminari.paginate_array(@post.comments.order('created_at DESC')).page(params[:page]).per(10) #Comment.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def new
@@ -29,17 +29,23 @@ class PostsController < ApplicationController
   end
 
   def create
-    # expire_action action: 'index'
-    @post = current_user.posts.build(post_params)
-    if @post.save
-      @post_event = PostEvent.new(user_id: current_user.id, username: current_user.username, post_id: @post.id, post_name: @post.topik, action: "Create post")
-      @post_event.save
-      redirect_to root_path
-    else
-      @post.errors.full_messages.each do |msg|
-      flash[:alert] =  msg
+    if current_user
+      if params[:array_image]
+        @post = current_user.posts.build(topik: "i add image", content: params[:array_image])
+        @post.save
+      else
+        @post = current_user.posts.build(post_params)
+        if @post.save
+          @post_event = PostEvent.new(user_id: current_user.id, username: current_user.username, post_id: @post.id, post_name: @post.topik, action: "Create post")
+          @post_event.save
+          redirect_to root_path
+        else
+          @post.errors.full_messages.each do |msg|
+            flash[:alert] =  msg
+          end
+          redirect_to new_post_path
+        end
       end
-      redirect_to new_post_path
     end
   end
 

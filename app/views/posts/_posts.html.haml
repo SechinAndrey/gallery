@@ -15,5 +15,6 @@
     %br
       #{t 'posts.lb_tag_list'}: #{ raw pst.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
       %br
-      = show_content(pst).html_safe
+      - content_analysis pst
+      = show_content(@text_arr.to_s, pst).html_safe
     %br
