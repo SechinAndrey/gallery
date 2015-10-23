@@ -10,11 +10,91 @@
     .time_ago
       = "#{t 'posts.lb_posted'} #{ time_ago_in_words(pst.created_at) } #{t 'all.lb_ago'}."
     %br
-    %b
-      = link_to pst.topik, post_path(pst.id)
-    %br
-      #{t 'posts.lb_tag_list'}: #{ raw pst.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
-      %br
-      - content_analysis pst
+      %b
+        = link_to pst.topik, post_path(pst.id)
+    - if !pst.tag_list.empty?
+      %i
+        #{t 'posts.lb_tag_list'}: #{ raw pst.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')}
+    - content_analysis pst
+    %p
       = show_content(@text_arr.to_s, pst).html_safe
-    %br
+    - case @img_arr.count
+      - when 1
+        - if @img_arr[0].count == 1
+          .one-image-index
+            = image_tag @img_arr[0][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+        - else
+          %table{:cellspacing => "5px"}
+            %tr
+            - @img_arr[0].each do |img|
+              %td{class: "square-td-index"}
+                = image_tag img, id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+      - when 2
+        - if @img_arr[1].count == 1
+          %table
+            %tr
+              %td{:rowspan => "2", :valign => "top", class: "td-one-size square-td-index"}
+                = image_tag @img_arr[0][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+              %td{class: "td-two-size square-td-index"}
+                = image_tag @img_arr[0][1], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+            %tr
+              %td{class: "td-two-size square-td-index"}
+                = image_tag @img_arr[1][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+        - else
+          %table
+            %tr
+              %td{class: "square-td-index"}
+                = image_tag @img_arr[0][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+              %td{class: "square-td-index"}
+                = image_tag @img_arr[0][1], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+            %tr
+              %td{class: "square-td-index"}
+                = image_tag @img_arr[1][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+              %td{class: "square-td-index"}
+                = image_tag @img_arr[1][1], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+      - else
+        %table
+          %tr
+            %td{class: "square-td-index"}
+              = image_tag @img_arr[0][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+            %td{class: "square-td-index"}
+              = image_tag @img_arr[0][1], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+          %tr
+            %td{class: "square-td-index"}
+              = image_tag @img_arr[1][0], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+            %td{class: "square-td-index"}
+              = image_tag @img_arr[1][1], id: 'image', "data-target" => "#imageModal", "data-toggle" => "modal"
+        %br
+          = link_to "Посмотреть больше картинок", post_path(pst.id), class: "col-lg-7 col-lg-offset-3 text-cente"
+
+#imageModal.modal.fade{"aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        Привет
+      .modal-body
+        %img#imagepreview{:src => ""}
+      .modal-footer
+        Привет
+
+
+
+
+-##imageModal.modal.fade{"aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+-#  .modal-dialog{:role => "document"}
+-#    .modal-content
+-#      .modal-header
+-#        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+-#          %span{"aria-hidden" => "true"} ×
+-#        %h4#exampleModalLabel.modal-title New message
+-#      .modal-body
+-#        %form
+-#          .form-group
+-#            %label.control-label{:for => "recipient-name"} Recipient:
+-#            %input#recipient-name.form-control{:type => "text"}/
+-#          .form-group
+-#            %label.control-label{:for => "message-text"} Message:
+-#            %textarea#message-text.form-control
+-#      .modal-footer
+-#        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+-#        %button.btn.btn-primary{:type => "button"} Send message

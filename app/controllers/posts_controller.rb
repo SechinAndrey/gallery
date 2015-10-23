@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
+
   before_action :only_sign_in, only: [:new, :create]
-
-  # caches_action :index, :cache_path => Proc.new {|c| c.request.url }
-
 
   def index
     @search = Post.search("")
@@ -31,7 +29,7 @@ class PostsController < ApplicationController
   def create
     if current_user
       if params[:array_image]
-        @post = current_user.posts.build(topik: "i add image", content: params[:array_image])
+        @post = current_user.posts.build(topik: "Посмотри какие изоюражения я добавил.", content: "Изображения с сайта: " + params[:array_image])
         @post.save
       else
         @post = current_user.posts.build(post_params)

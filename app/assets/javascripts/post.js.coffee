@@ -25,3 +25,8 @@ jQuery ->
       terms.push ''
       @value = terms.join(', ')
       false
+
+  $('#image').on 'click', (event) ->
+    $('#imagepreview').attr 'src', $(this).attr('src')
+    $('#imageModal').modal 'show'
+    return

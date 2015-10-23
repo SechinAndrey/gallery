@@ -13,9 +13,10 @@
  *= require bootstrap-tagsinput
  */
 
-  @import "bootstrap";
-
 .row{
   margin-right: 0px !important;
   margin-left: 0px !important;
+}
+.navbar-right{
+  margin: 0px !important;
 }

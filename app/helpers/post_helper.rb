@@ -23,6 +23,4 @@ module PostHelper
        end
      end
   end
-
-
 end
